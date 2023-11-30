@@ -1,0 +1,17 @@
+{
+    "short_name": "Around the U.S",
+    "name": "Di Sekitar Amerika Serikat",
+    "icons": [
+        {
+            "src": "/images/z.png",
+            "type": "image/png",
+            "sizes": "500x500"
+        }
+    ],
+    "id": "/?source=pwa",
+    "start_url": "/index.html",
+    "background_color": "#000000",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#000000"
+}
