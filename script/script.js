@@ -1,14 +1,19 @@
 const editBtn = document.querySelector(".profile__button_type-edit");
 const popup = document.querySelector(".popup");
-const closeBtn = document.querySelector(".popup__button_type-close");
+const newPlace = document.querySelector(".new-place");
 const formInput = document.querySelector(".popup__form");
 const nameInput = document.getElementById("form-profile-username-input");
 const jobInput = document.getElementById("form-profile-job-input");
 const nameValue = document.querySelector(".profile__name");
 const jobValue = document.querySelector(".profile__job");
-const cardTemplate = document.getElementById('card-template');
-const cardsContainer = document.querySelector('.cards__container');
- 
+const cardTemplate = document.getElementById("card-template");
+const cardsContainer = document.querySelector(".cards__container");
+const newCardBtn = document.querySelector(".profile__button_type-add");
+const closeEditProfileBtn = document.getElementById("closeEditProfile");
+const closeNewPlaceBtn = document.getElementById("closeNewPlace");
+const newCardForm = document.querySelector(".popup__form_add-card");
+const titleInput = document.querySelector(".popup__form-input_card-title");
+const urlInput = document.querySelector(".popup__form-input_type-url");
 
 formInput.addEventListener("submit", (evt) => {
 	evt.preventDefault();
@@ -25,56 +30,87 @@ editBtn.addEventListener("click", () => {
 	popup.classList.add("popup_active");
 });
 
-closeBtn.addEventListener("click", () => {
-	popup.classList.remove("popup_active");
+newCardBtn.addEventListener("click", () => {
+	newPlace.classList.add("popup_active");
+});
+
+function closePopup(popupElement) {
+	popupElement.classList.remove("popup_active");
+}
+
+closeEditProfileBtn.addEventListener("click", () => {
+	closePopup(popup);
+});
+
+closeNewPlaceBtn.addEventListener("click", () => {
+	closePopup(newPlace);
 });
 
 const data = [
 	{
 		name: "Lembah Yosemite",
-		link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg",
+		link:
+			"https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg",
 	},
 	{
 		name: "Danau Louise",
-		link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg",
+		link:
+			"https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg",
 	},
 	{
 		name: "Pegunungan Gundul",
-		link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_bald-mountains.jpg",
+		link:
+			"https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_bald-mountains.jpg",
 	},
 	{
 		name: "Gunung Latemar",
-		link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_latemar.jpg",
+		link:
+			"https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_latemar.jpg",
 	},
 	{
 		name: "Taman Nasional Vanoise",
-		link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_vanoise.jpg",
+		link:
+			"https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_vanoise.jpg",
 	},
 	{
 		name: "Lago di Braies",
-		link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg",
+		link:
+			"https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg",
 	},
 ];
 
 function populateCardTemplate(item) {
-  const templateContent = cardTemplate.content.cloneNode(true);
-  const imgElement = templateContent.querySelector(".card__image");
-  imgElement.src = item.link;
-  imgElement.alt = item.name;
-  const titleElement = templateContent.querySelector(".card__title");
-  titleElement.textContent = item.name;
-  const likeButton = templateContent.querySelector(".card__button_type-like");
-  if (likeButton) {
-    likeButton.addEventListener("click", function (evt) {
-      likeButton.classList.toggle("card__button_type-like_active");
-    });
-  }
+	const templateContent = cardTemplate.content.cloneNode(true);
+	const imgElement = templateContent.querySelector(".card__image");
+	imgElement.src = item.link;
+	imgElement.alt = item.name;
+	const titleElement = templateContent.querySelector(".card__title");
+	titleElement.textContent = item.name;
+	const likeButton = templateContent.querySelector(".card__button_type-like");
+	if (likeButton) {
+		likeButton.addEventListener("click", function (evt) {
+			likeButton.classList.toggle("card__button_type-like_active");
+		});
+	}
 
-  return templateContent;
+	return templateContent;
 }
-
 
 data.forEach((item) => {
 	const populatedTemplate = populateCardTemplate(item);
 	cardsContainer.appendChild(populatedTemplate);
 });
+
+function addPlace(item) {
+	item.preventDefault();
+	const newCardData = {
+		name: titleInput.value,
+		link: urlInput.value,
+	};
+
+	const newCardElement = populateCardTemplate(newCardData);
+	cardsContainer.prepend(newCardElement);
+	closePopup(newPlace);
+}
+
+newCardForm.addEventListener("submit", addPlace);
