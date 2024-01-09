@@ -125,11 +125,58 @@
                     <input type="text" value="Penjelajah" class="popup__form-input popup__form-input_job" name="job"
                         placeholder="Job kamu" id="form-profile-job-input" autocomplete="on" required>
 
-                    <button type="submit" class="popup__button popup__button_type-submit"
-                        aria-label="submit">Simpan</button>
-                </form>
-            </div>
+                <button type="submit" class="popup__button popup__button_type-submit" aria-label="submit">
+                    Simpan
+                </button>
+            </form>
         </div>
+    </div>
+
+    <!--Form new place-->
+    <div class="popup new-place">
+        <div class="popup__container">
+            <h3 class="popup__title">Tempat baru</h3>
+            <button type="button" aria-label="Close" class="popup__button popup__button_type-close"
+                id="closeNewPlace"></button>
+            <form class="popup__form popup__form_add-card" name="addCard">
+                <input aria-label="Title" type="text" class="popup__form-input popup__form-input_card-title"
+                    name="newCardTitle" placeholder="Judul:" minlength="1" maxlength="30" required />
+                <input aria-label="Image URL" type="url" class="popup__form-input popup__form-input_type-url"
+                    name="newCardImage" placeholder="URL gambar" required />
+                <button type="submit" class="popup__button popup__button_type-submit">
+                    Simpan
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!--Template card-->
+
+    <template id="card-template">
+        <figure class="card">
+            <button type="button" aria-label="Delete" class="card__button card__button_type-delete"></button>
+            <img src=" " alt="" class="card__image" />
+
+            <figcaption class="card__content">
+                <h2 class="card__title"></h2>
+
+                <div class="card__actions">
+                    <button type="button" class="card__button card__button_type-like" aria-label="like"
+                        data-liked="false"></button>
+                </div>
+            </figcaption>
+        </figure>
+    </template>
+
+    <div class="popup popup-image">
+        <div class="popup__container-images">
+          <button type="button" aria-label="Close" class="popup__button popup__button_type-close" id="closeImage"></button>
+          <figure class="popup__figure">
+            <img class="popup__image" src="" alt="">
+            <figcaption class="popup__image-title"></figcaption>
+          </figure>
+        </div>
+      </div>
 
         <script src="./script/script.js"></script>
     </body>
