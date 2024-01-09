@@ -1,0 +1,8 @@
+.popup__container-images {
+    display: grid;
+    align-items: center;
+    width: 430px;
+    position: relative;
+    -webkit-animation: slidedownfadein 0.5s forwards;
+    animation: slidedownfadein 0.5s forwards;
+}

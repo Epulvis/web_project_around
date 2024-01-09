@@ -1,129 +1,61 @@
 <!DOCTYPE html>
 <html lang="id">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link rel="manifest" href="./vendor/manifest.json">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="author" content="Mochammad Syaifuddin Zuhri">
-        <title>Di Sekitar Amerika Serikat</title>
-        <meta name="keywords" content="html, css, javascript">
-        <link rel="stylesheet" href="./pages/index.css">
-    </head>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="manifest" href="./vendor/manifest.json" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Mochammad Syaifuddin Zuhri" />
+    <title>Di Sekitar Amerika Serikat</title>
+    <meta name="keywords" content="html, css, javascript" />
+    <link rel="stylesheet" href="./pages/index.css" />
+</head>
 
-    <body class="page">
-        <header class="header">
-            <img class="logo" src="./images/Vector.svg" alt="logo Around the U.S">
-        </header>
-        <main class="content">
-            <!--Profile-->
-            <section class="profile">
-                <img class="profile__image" src="./images/image.jpg" alt="profile avatar">
-                <div class="profile__info">
-                    <div class="profile__info-container">
-                        <h1 class="profile__name">Jacques Cousteau</h1>
-                        <button class="profile__button profile__button_type-edit" type="button"
-                            aria-label="edit"></button>
-                    </div>
-                    <p class="profile__job">Penjelajah</p>
+<body class="page">
+    <header class="header">
+        <img class="logo" src="./images/Vector.svg" alt="logo Around the U.S" />
+    </header>
+    <main class="content">
+        <!--Profile-->
+        <section class="profile">
+            <img class="profile__image" src="./images/image.jpg" alt="profile avatar" />
+            <div class="profile__info">
+                <div class="profile__info-container">
+                    <h1 class="profile__name">Jacques Cousteau</h1>
+                    <button class="profile__button profile__button_type-edit" type="button" aria-label="edit"></button>
                 </div>
-                <button class="profile__button profile__button_type-add" type="button" aria-label="add"></button>
-            </section>
+                <p class="profile__job">Penjelajah</p>
+            </div>
+            <button class="profile__button profile__button_type-add" type="button" aria-label="add"></button>
+        </section>
 
-            <!--Card-->
-            <section class="cards">
-                <div class="cards__container">
-                    <figure class="card">
-                        <img src="./images/card/kirill-pershin-1088404-unsplash.jpg" alt="Lembah Yosemite"
-                            class="card__image">
-                        <figcaption class="card__content">
-                            <h2 class="card__title">Lembah Yosemite</h2>
-                            <div class="card__actions">
-                                <button type="button" class="card__button card__button_type-like" aria-label="like"
-                                    data-liked="false"></button>
-                            </div>
-                        </figcaption>
-                    </figure>
-                    <figure class="card">
-                        <img src="./images/card/kirill-pershin-1404681-unsplash.jpg" alt="Danau Louise"
-                            class="card__image">
-                        <figcaption class="card__content">
-                            <h2 class="card__title">Danau Louise</h2>
-                            <div class="card__actions">
-                                <button type="button" class="card__button card__button_type-like" aria-label="like"
-                                    data-liked="false"></button>
-                            </div>
-                        </figcaption>
-                    </figure>
-                    <figure class="card">
-                        <img src="./images/card/kirill-pershin-1556355-unsplash.jpg" alt="Pegunungan Gundul"
-                            class="card__image">
-                        <figcaption class="card__content">
-                            <h2 class="card__title">Pegunungan Gundul</h2>
-                            <div class="card__actions">
-                                <button type="button" class="card__button card__button_type-like" aria-label="like"
-                                    data-liked="false"></button>
-                            </div>
-                        </figcaption>
-                    </figure>
-                    <figure class="card">
-                        <img src="./images/card/kirill-pershin-1404682-unsplash.jpg" alt="Latemar" class="card__image">
-                        <figcaption class="card__content">
-                            <h2 class="card__title">Latemar</h2>
-                            <div class="card__actions">
-                                <button type="button" class="card__button card__button_type-like" aria-label="like"
-                                    data-liked="false"></button>
-                            </div>
-                        </figcaption>
-                    </figure>
-                    <figure class="card">
-                        <img src="./images/card/kirill-pershin-1556356-unsplash.jpg" alt="Vanoise National"
-                            class="card__image">
-                        <figcaption class="card__content">
-                            <h2 class="card__title">Vanoise National</h2>
-                            <div class="card__actions">
-                                <button type="button" class="card__button card__button_type-like" aria-label="like"
-                                    data-liked="false"></button>
-                            </div>
-                        </figcaption>
-                    </figure>
-                    <figure class="card">
-                        <img src="./images/card/kirill-pershin-1088405-unsplash.jpg" alt="Lago di Braies"
-                            class="card__image">
-                        <figcaption class="card__content">
-                            <h2 class="card__title">Lago di Braies</h2>
-                            <div class="card__actions">
-                                <button type="button" class="card__button card__button_type-like" aria-label="like"
-                                    data-liked="false"></button>
-                            </div>
-                        </figcaption>
-                    </figure>
-                </div>
-            </section>
-        </main>
+        <!--Card-->
+        <section class="cards">
+            <ul class="cards__container"></ul>
+        </section>
+    </main>
 
-        <footer class="footer">
-            <p class="footer__copyright">© 2023 Around The U.S.</p>
-        </footer>
+    <footer class="footer">
+        <p class="footer__copyright">© 2023 Around The U.S.</p>
+    </footer>
 
-        <!---------------------------------------------------------------------------------------------------------->
+    <!---------------------------------------------------------------------------------------------------------->
 
-        <!--Edit Profile-->
-        <div class="popup">
-            <div class="popup__container">
-                <button type="button" class="popup__button popup__button_type-close" aria-label="close"></button>
-                <h2 class="popup__title">Edit profile</h2>
-                <form class="popup__form" name="form profile">
+    <!--Form edit Profile-->
+    <div class="popup edit-Profile">
+        <div class="popup__container">
+            <button type="button" aria-label="close" class="popup__button popup__button_type-close" 
+                id="closeEditProfile"></button>
+            <h2 class="popup__title">Edit profile</h2>
+            <form class="popup__form" name="form profile">
+                <!-- Edit Profile - name input -->
+                <input type="text" value="Jacques Cousteau" class="popup__form-input popup__form-input_name" name="name"
+                    placeholder="Masukkan nama" id="form-profile-username-input" autocomplete="given-name" required />
 
-                    <!-- Edit Profile - name input -->
-                    <input type="text" value="Jacques Cousteau" class="popup__form-input popup__form-input_name"
-                        name="name" placeholder="Masukkan nama" id="form-profile-username-input"
-                        autocomplete="given-name" required>
-
-                    <!-- Edit Profile - job input -->
-                    <input type="text" value="Penjelajah" class="popup__form-input popup__form-input_job" name="job"
-                        placeholder="Job kamu" id="form-profile-job-input" autocomplete="on" required>
+                <!-- Edit Profile - job input -->
+                <input type="text" value="Penjelajah" class="popup__form-input popup__form-input_job" name="job"
+                    placeholder="Job kamu" id="form-profile-job-input" autocomplete="on" required />
 
                 <button type="submit" class="popup__button popup__button_type-submit" aria-label="submit">
                     Simpan
@@ -178,7 +110,7 @@
         </div>
       </div>
 
-        <script src="./script/script.js"></script>
-    </body>
+    <script src="./script/script.js"></script>
+</body>
 
 </html>
