@@ -9,6 +9,9 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    animation: fadeInOut 0.1s ease-in-out forwards;
+    pointer-events: none;
 }
 
 .popup_active {
@@ -22,4 +25,15 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.8);
+    animation: fadeInOut 0.1s ease-in-out forwards;
+    pointer-events: auto;
+}
+
+@keyframes fadeInOut {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
