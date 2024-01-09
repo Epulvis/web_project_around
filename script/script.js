@@ -1,6 +1,8 @@
 const editBtn = document.querySelector(".profile__button_type-edit");
 const popup = document.querySelector(".popup");
 const newPlace = document.querySelector(".new-place");
+const popupImages = document.querySelector(".popup-image");
+const closeImageBtn = document.getElementById("closeImage");
 const formInput = document.querySelector(".popup__form");
 const nameInput = document.getElementById("form-profile-username-input");
 const jobInput = document.getElementById("form-profile-job-input");
@@ -44,6 +46,10 @@ closeEditProfileBtn.addEventListener("click", () => {
 
 closeNewPlaceBtn.addEventListener("click", () => {
 	closePopup(newPlace);
+});
+
+closeImageBtn.addEventListener("click", () => {
+	closePopup(popupImages);
 });
 
 const data = [
@@ -92,6 +98,22 @@ function populateCardTemplate(item) {
 			likeButton.classList.toggle("card__button_type-like_active");
 		});
 	}
+
+	const cardDeleteBtn = templateContent.querySelector('.card__button_type-delete');
+	cardDeleteBtn.addEventListener("click", () => {
+		const listItem = cardDeleteBtn.closest(".card");
+		listItem.remove();
+	});
+
+	imgElement.addEventListener("click", () => {
+		const popupPhoto = popupImages.querySelector(".popup__image");
+		const popupPhotoTitle = popupImages.querySelector(".popup__image-title");
+
+		popupPhoto.src = item.link;
+		popupPhotoTitle.textContent = item.name;
+
+		popupImages.classList.add("popup_active");
+	});
 
 	return templateContent;
 }
