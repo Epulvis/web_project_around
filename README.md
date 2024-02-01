@@ -1,4 +1,4 @@
-# Proyek 5: Di Sekitar Amerika Serikat
+# Proyek 7: Di Sekitar Amerika Serikat
 
 ## Description
 
@@ -41,7 +41,7 @@ Around The U.S. is a simple web page that displays the profile of an explorer na
 
 ## Project Links
 
-- [Figma Project](https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
+- [Figma Project](https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_6/id/Proyek_7._daftar_periksa_.pdf)
 - [Image Optimization](https://tinypng.com/)
 - [BEM Validator](https://nglazov.github.io/bem-validator-page/)
 - [Autoprefixer](https://autoprefixer.github.io/)
@@ -50,7 +50,7 @@ Around The U.S. is a simple web page that displays the profile of an explorer na
 
 **Figma**
 
-You can find the design for this project on Figma. [Link to Figma Project](https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
+You can find the design for this project on Figma. [Link to Figma Project](https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_6/id/Proyek_7._daftar_periksa_.pdf)
 
 **Image Optimization**
 
