@@ -187,6 +187,10 @@ template {
     display: none;
 }
 
+.form__input_type_error + .form__checkbox-item {
+    border: 1px solid red;
+  }
+
 @keyframes slideDownFadeIn {
     0% {
         top: -200px;
