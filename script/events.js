@@ -14,8 +14,8 @@ export default class PopupManager {
 
 export function initializePopupEvents() {
   document.addEventListener("DOMContentLoaded", function () {
-    var popups = document.querySelectorAll(".popup");
-    var popupManagers = Array.from(popups).map(popup => new PopupManager(popup));
+    const popups = document.querySelectorAll(".popup");
+    const popupManagers = Array.from(popups).map(popup => new PopupManager(popup));
 
     popups.forEach(function (popup, index) {
       popup.addEventListener("click", function (event) {
@@ -25,7 +25,7 @@ export function initializePopupEvents() {
       });
     });
 
-    var closeButtons = document.querySelectorAll(".popup__button_type-close");
+    const closeButtons = document.querySelectorAll(".popup__button_type-close");
 
     closeButtons.forEach(function (button, index) {
       button.addEventListener("click", function () {
@@ -33,7 +33,7 @@ export function initializePopupEvents() {
       });
     });
 
-    document.addEventListener("keydown", function (event) {
+    document.removeEventListener("keydown", function ( event) {
       if (event.key === "Escape") {
         popupManagers.forEach(function (popupManager) {
           popupManager.hidePopup();
