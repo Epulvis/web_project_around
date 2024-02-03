@@ -1,6 +1,9 @@
 import { editBtn, formInput, nameInput, jobInput, nameValue, jobValue, newCardBtn, newCardForm, popup, editFormModalWindow, cardFormModalWindow, data, cardsContainer } from "./utils.js";
 import FormValidator from "./FormValidator.js";
-import PopupManager, { initializePopupEvents } from "./events.js";
+import PopupManager, {
+  initializePopupEvents,
+  closePopupUsingEscButton,
+} from './events.js'; 
 import { addPlace, populateCardTemplate } from "./cardFunctions.js";
 
 // Elements
@@ -36,6 +39,7 @@ function handleEditButtonClick() {
 
 function handleNewCardButtonClick() {
   cardFormModalWindow.classList.add("popup_active");
+  document.addEventListener('keydown', closePopupUsingEscButton)
 }
 
 // Initialize Validators
