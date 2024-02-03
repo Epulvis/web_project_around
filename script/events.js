@@ -5,11 +5,12 @@ export default class PopupManager {
 
 	showPopup() {
 		this._popupElement.classList.add("popup_active");
+		document.addEventListener('keydown', closePopupUsingEscButton);
 	}
 
 	hidePopup() {
 		this._popupElement.classList.remove("popup_active");
-		document.removeEventListener("keydown", function (event) {});
+		document.removeEventListener('keydown', closePopupUsingEscButton);
 	}
 }
 
@@ -35,13 +36,17 @@ export function initializePopupEvents() {
 				popupManagers[index].hidePopup();
 			});
 		});
-
-		document.addEventListener("keydown", function (event) {
-			if (event.key === "Escape") {
-				popupManagers.forEach(function (popupManager) {
-					popupManager.hidePopup();
-				});
-			}
-		});
 	});
 }
+
+export function closePopupUsingEscButton(event) {
+    const popups = document.querySelectorAll('.popup');
+    const popupManagers = Array.from(popups).map(
+        (popup) => new PopupManager(popup),
+    );
+    if (event.key === 'Escape') {
+        popupManagers.forEach(function (popupManager) {
+            popupManager.hidePopup();
+        });
+    }
+} 
