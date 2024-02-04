@@ -54,7 +54,7 @@ data.forEach((item) => {
 // Event Listeners
 formInput.addEventListener("submit", handleFormSubmit);
 editBtn.addEventListener("click", handleEditButtonClick);
-newCardBtn.addEventListener("click", handleNewCardButtonClick);
+newCardBtn.showPopup();
 
 newCardForm.addEventListener("submit", function (event) {
   event.preventDefault();
