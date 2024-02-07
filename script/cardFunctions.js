@@ -6,7 +6,7 @@ import {
 	cardsContainer,
 	cardFormModalWindow,
 } from "./utils.js";
-import PopupManager from "./events.js";
+import PopupManager, { closePopupUsingEscButton } from './events.js'; 
 
 const popupManager = new PopupManager(cardFormModalWindow);
 
@@ -40,6 +40,7 @@ export function populateCardTemplate(item) {
 		popupPhotoTitle.textContent = item.name;
 
 		popupImages.classList.add("popup_active");
+		document.addEventListener('keydown', closePopupUsingEscButton)
 	});
 
 	return templateContent;
