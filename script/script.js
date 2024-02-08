@@ -4,7 +4,7 @@ import PopupManager, {
   initializePopupEvents,
   closePopupUsingEscButton,
 } from './events.js'; 
-import { addPlace, populateCardTemplate } from "./cardFunctions.js";
+import { addPlace } from "./cardFunctions.js";
 
 // Elements
 const popupManager = new PopupManager(popup);
@@ -47,18 +47,12 @@ editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
 // Initialize Popup Events
-initializePopupEvents();
-
-// Populate Cards
-data.forEach((item) => {
-  const populatedTemplate = populateCardTemplate(item);
-  cardsContainer.appendChild(populatedTemplate);
-});
+initializePopupEvents()
 
 // Event Listeners
 formInput.addEventListener("submit", handleFormSubmit);
 editBtn.addEventListener("click", handleEditButtonClick);
-newCardBtn.showPopup();
+newCardBtn.addEventListener("click", handleNewCardButtonClick);
 
 newCardForm.addEventListener("submit", function (event) {
   event.preventDefault();
