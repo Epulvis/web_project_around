@@ -1,4 +1,4 @@
-# Proyek 7: Di Sekitar Amerika Serikat
+# Proyek 8: Di Sekitar Amerika Serikat
 
 ## Description
 
