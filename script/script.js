@@ -38,7 +38,7 @@ function addPlace(item) {
 }
 
 // Validation settings
-const enableValidation = {
+const validationSelectors = {
 	formSelector: ".popup__form",
 	inputSelector: ".popup__form-input",
 	submitButtonSelector: ".popup__button_type-submit",
@@ -49,11 +49,11 @@ const enableValidation = {
 
 // Validators
 const editFormValidator = new FormValidator(
-	enableValidation,
+	validationSelectors,
 	editFormModalWindow
 );
 const addFormValidator = new FormValidator(
-	enableValidation,
+	validationSelectors,
 	cardFormModalWindow
 );
 
