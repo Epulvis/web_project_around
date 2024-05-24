@@ -1,32 +1,43 @@
 import '../pages/index.css';
 import Section from "../components/section.js";
-import Popup  from "../components/popup.js";
 import PopupWithImage from "../components/PopupWithImage.js"
+import PopupWithForm from "../components/PopupWithForm.js";
 import FormValidator from "./FormValidator.js";
-import {initializePopupEvents} from "./utils.js";
 import Card from "./Card.js";
 
 // Elements
 const editBtn = document.querySelector(".profile__button_type-edit");
-const formInput = document.querySelector(".popup__form");
 const nameInput = document.getElementById("form-profile-username-input");
 const jobInput = document.getElementById("form-profile-job-input");
 const nameValue = document.querySelector(".profile__name");
 const jobValue = document.querySelector(".profile__job");
 const newCardBtn = document.querySelector(".profile__button_type-add");
-const newCardForm = document.querySelector(".popup__form_add-card");
 const editFormModalWindow = ".edit-Profile";
 const cardFormModalWindow = ".new-place";
 const imagePopupSelector = ".popup-image";
 const titleInput = document.querySelector(".popup__form-input_card-title");
 const urlInput = document.querySelector(".popup__form-input_type-url");
 const cardsContainerSelector = ".cards__container";
-const editProfilePopup = new Popup(editFormModalWindow);
-const addPlacePopup = new Popup(cardFormModalWindow);
-const imagePopup = new PopupWithImage(imagePopupSelector); 
+
+// Create Popup instances
+const imagePopup = new PopupWithImage(imagePopupSelector);
+
+const editProfilePopup = new PopupWithForm(editFormModalWindow, (formData) => {
+	nameValue.textContent = formData["profileName"];
+	jobValue.textContent = formData["profilejob"];
+	editProfilePopup.close();
+});
+
+const addPlacePopup = new PopupWithForm(cardFormModalWindow, (formData) => {
+	const newCardData = {
+		name: formData["newCardTitle"],
+		link: formData["newCardImage"],
+	};
+	renderCard(newCardData);
+	addPlacePopup.close();
+});
 
 // Create a renderer function for the Section class
-
 const renderCard = (item) => {
 	const cardInstance = new Card(item, "#card-template", (name, link) => {
 		imagePopup.open({ name, link });
@@ -103,13 +114,6 @@ const addFormValidator = new FormValidator(
 );
 
 // Functions
-function handleFormSubmit(event) {
-	event.preventDefault();
-	nameValue.textContent = nameInput.value;
-	jobValue.textContent = jobInput.value;
-	editProfilePopup.close();
-}
-
 function handleEditButtonClick() {
 	nameInput.value = nameValue.textContent;
 	jobInput.value = jobValue.textContent;
@@ -125,10 +129,10 @@ editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
 // Initialize Popup Events
-initializePopupEvents();
+editProfilePopup.setEventListeners();
+addPlacePopup.setEventListeners();
+imagePopup.setEventListeners();
 
 // Event Listeners
-formInput.addEventListener("submit", handleFormSubmit);
 editBtn.addEventListener("click", handleEditButtonClick);
 newCardBtn.addEventListener("click", handleNewCardButtonClick);
-newCardForm.addEventListener("submit", addPlace);
