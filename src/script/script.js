@@ -1,30 +1,33 @@
 import '../pages/index.css';
 import Section from "../components/section.js";
-import PopupWithImage from "../components/PopupWithImage.js"
+import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js"; 
 import FormValidator from "./FormValidator.js";
 import Card from "./Card.js";
 
 // Elements
 const editBtn = document.querySelector(".profile__button_type-edit");
-const nameInput = document.getElementById("form-profile-username-input");
-const jobInput = document.getElementById("form-profile-job-input");
-const nameValue = document.querySelector(".profile__name");
-const jobValue = document.querySelector(".profile__job");
 const newCardBtn = document.querySelector(".profile__button_type-add");
 const editFormModalWindow = ".edit-Profile";
 const cardFormModalWindow = ".new-place";
 const imagePopupSelector = ".popup-image";
-const titleInput = document.querySelector(".popup__form-input_card-title");
-const urlInput = document.querySelector(".popup__form-input_type-url");
 const cardsContainerSelector = ".cards__container";
+
+// Create UserInfo instance
+const userInfo = new UserInfo({
+	nameSelector: ".profile__name",
+	jobSelector: ".profile__job"
+});
 
 // Create Popup instances
 const imagePopup = new PopupWithImage(imagePopupSelector);
 
 const editProfilePopup = new PopupWithForm(editFormModalWindow, (formData) => {
-	nameValue.textContent = formData["profileName"];
-	jobValue.textContent = formData["profilejob"];
+	userInfo.setUserInfo({
+		name: formData["profileName"],
+		job: formData["profilejob"],
+	});
 	editProfilePopup.close();
 });
 
@@ -80,19 +83,6 @@ const section = new Section({
 // Render initial items
 section.renderItems();
 
-
-function addPlace(event) {
-	event.preventDefault();
-	const newCardData = {
-		name: titleInput.value,
-		link: urlInput.value,
-	};
-	renderCard(newCardData);
-	addPlacePopup.close();
-	titleInput.value = "";
-	urlInput.value = "";
-}
-
 // Validation settings
 const validationSelectors = {
 	formSelector: ".popup__form",
@@ -115,8 +105,9 @@ const addFormValidator = new FormValidator(
 
 // Functions
 function handleEditButtonClick() {
-	nameInput.value = nameValue.textContent;
-	jobInput.value = jobValue.textContent;
+	const userData = userInfo.getUserInfo();
+	document.getElementById("form-profile-username-input").value = userData.name;
+	document.getElementById("form-profile-job-input").value = userData.job;
 	editProfilePopup.open();
 }
 
