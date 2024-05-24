@@ -1,10 +1,8 @@
 import '../pages/index.css';
-import Section from "../components/section.js"; 
+import Section from "../components/section.js";
+import Popup  from "../components/popup.js";
 import FormValidator from "./FormValidator.js";
-import PopupManager, {
-	initializePopupEvents,
-	closePopupUsingEscButton,
-} from "./utils.js";
+import {initializePopupEvents} from "./utils.js";
 import Card from "./Card.js";
 
 // Elements
@@ -16,20 +14,19 @@ const nameValue = document.querySelector(".profile__name");
 const jobValue = document.querySelector(".profile__job");
 const newCardBtn = document.querySelector(".profile__button_type-add");
 const newCardForm = document.querySelector(".popup__form_add-card");
-const popup = document.querySelector(".popup");
-const editFormModalWindow = document.querySelector(".edit-Profile");
-const cardFormModalWindow = document.querySelector(".new-place");
+const editFormModalWindow = ".edit-Profile";
+const cardFormModalWindow = ".new-place";
 const titleInput = document.querySelector(".popup__form-input_card-title");
 const urlInput = document.querySelector(".popup__form-input_type-url");
 const cardsContainerSelector = ".cards__container";
-const popupManager = new PopupManager(popup);
-const popupAddPlace = new PopupManager(cardFormModalWindow);
+const editProfilePopup = new Popup(editFormModalWindow);
+const addPlacePopup = new Popup(cardFormModalWindow);
 
 // Create a renderer function for the Section class
 const renderCard = (item) => {
 	const cardInstance = new Card(item, "#card-template");
 	const newCardElement = cardInstance.generateCard();
-	section.addItem(newCardElement);  // Use Section class's addItem method
+	section.addItem(newCardElement);
 };
 
 // Initialize Section with card data and renderer function
@@ -74,7 +71,7 @@ function addPlace(event) {
 		link: urlInput.value,
 	};
 	renderCard(newCardData);
-	popupAddPlace.hidePopup();
+	addPlacePopup.close();
 	titleInput.value = "";
 	urlInput.value = "";
 }
@@ -92,11 +89,11 @@ const validationSelectors = {
 // Validators
 const editFormValidator = new FormValidator(
 	validationSelectors,
-	editFormModalWindow
+	document.querySelector(editFormModalWindow)
 );
 const addFormValidator = new FormValidator(
 	validationSelectors,
-	cardFormModalWindow
+	document.querySelector(cardFormModalWindow)
 );
 
 // Functions
@@ -104,18 +101,17 @@ function handleFormSubmit(event) {
 	event.preventDefault();
 	nameValue.textContent = nameInput.value;
 	jobValue.textContent = jobInput.value;
-	popupManager.hidePopup();
+	editProfilePopup.close();
 }
 
 function handleEditButtonClick() {
 	nameInput.value = nameValue.textContent;
 	jobInput.value = jobValue.textContent;
-	popupManager.showPopup();
+	editProfilePopup.open();
 }
 
 function handleNewCardButtonClick() {
-	cardFormModalWindow.classList.add("popup_active");
-	document.addEventListener("keydown", closePopupUsingEscButton);
+	addPlacePopup.open();
 }
 
 // Initialize Validators
@@ -129,8 +125,4 @@ initializePopupEvents();
 formInput.addEventListener("submit", handleFormSubmit);
 editBtn.addEventListener("click", handleEditButtonClick);
 newCardBtn.addEventListener("click", handleNewCardButtonClick);
-
-newCardForm.addEventListener("submit", function (event) {
-	event.preventDefault();
-	addPlace(event);
-});
+newCardForm.addEventListener("submit", addPlace);

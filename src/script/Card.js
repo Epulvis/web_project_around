@@ -1,5 +1,4 @@
 import PopupManager from './utils.js'; 
-const cardsContainer = document.querySelector(".cards__container");
 const popupImages = document.querySelector(".popup-image");
 const popupManager = new PopupManager(popupImages);
 
