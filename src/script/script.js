@@ -1,6 +1,7 @@
 import '../pages/index.css';
 import Section from "../components/section.js";
 import Popup  from "../components/popup.js";
+import PopupWithImage from "../components/PopupWithImage.js"
 import FormValidator from "./FormValidator.js";
 import {initializePopupEvents} from "./utils.js";
 import Card from "./Card.js";
@@ -16,15 +17,20 @@ const newCardBtn = document.querySelector(".profile__button_type-add");
 const newCardForm = document.querySelector(".popup__form_add-card");
 const editFormModalWindow = ".edit-Profile";
 const cardFormModalWindow = ".new-place";
+const imagePopupSelector = ".popup-image";
 const titleInput = document.querySelector(".popup__form-input_card-title");
 const urlInput = document.querySelector(".popup__form-input_type-url");
 const cardsContainerSelector = ".cards__container";
 const editProfilePopup = new Popup(editFormModalWindow);
 const addPlacePopup = new Popup(cardFormModalWindow);
+const imagePopup = new PopupWithImage(imagePopupSelector); 
 
 // Create a renderer function for the Section class
+
 const renderCard = (item) => {
-	const cardInstance = new Card(item, "#card-template");
+	const cardInstance = new Card(item, "#card-template", (name, link) => {
+		imagePopup.open({ name, link });
+	});
 	const newCardElement = cardInstance.generateCard();
 	section.addItem(newCardElement);
 };
