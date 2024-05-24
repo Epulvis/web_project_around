@@ -1,3 +1,5 @@
+import '../pages/index.css';
+import Section from "../components/section.js"; 
 import FormValidator from "./FormValidator.js";
 import PopupManager, {
 	initializePopupEvents,
@@ -19,19 +21,59 @@ const editFormModalWindow = document.querySelector(".edit-Profile");
 const cardFormModalWindow = document.querySelector(".new-place");
 const titleInput = document.querySelector(".popup__form-input_card-title");
 const urlInput = document.querySelector(".popup__form-input_type-url");
-const cardsContainer = document.querySelector(".cards__container");
+const cardsContainerSelector = ".cards__container";
 const popupManager = new PopupManager(popup);
 const popupAddPlace = new PopupManager(cardFormModalWindow);
 
-function addPlace(item) {
-	item.preventDefault();
+// Create a renderer function for the Section class
+const renderCard = (item) => {
+	const cardInstance = new Card(item, "#card-template");
+	const newCardElement = cardInstance.generateCard();
+	section.addItem(newCardElement);  // Use Section class's addItem method
+};
+
+// Initialize Section with card data and renderer function
+const section = new Section({
+	items: [
+		{
+			name: "Lembah Yosemite",
+			link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg",
+		},
+		{
+			name: "Danau Louise",
+			link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg",
+		},
+		{
+			name: "Pegunungan Gundul",
+			link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_bald-mountains.jpg",
+		},
+		{
+			name: "Gunung Latemar",
+			link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_latemar.jpg",
+		},
+		{
+			name: "Taman Nasional Vanoise",
+			link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_vanoise.jpg",
+		},
+		{
+			name: "Lago di Braies",
+			link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg",
+		},
+	],
+	renderer: renderCard
+}, cardsContainerSelector);
+
+// Render initial items
+section.renderItems();
+
+
+function addPlace(event) {
+	event.preventDefault();
 	const newCardData = {
 		name: titleInput.value,
 		link: urlInput.value,
 	};
-	const cardInstance = new Card(newCardData, "#card-template");
-	const newCardElement = cardInstance.generateCard();
-	cardsContainer.prepend(newCardElement);
+	renderCard(newCardData);
 	popupAddPlace.hidePopup();
 	titleInput.value = "";
 	urlInput.value = "";

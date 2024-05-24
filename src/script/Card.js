@@ -3,39 +3,6 @@ const cardsContainer = document.querySelector(".cards__container");
 const popupImages = document.querySelector(".popup-image");
 const popupManager = new PopupManager(popupImages);
 
-const data = [
-	{
-		name: "Lembah Yosemite",
-		link:
-			"https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg",
-	},
-	{
-		name: "Danau Louise",
-		link:
-			"https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg",
-	},
-	{
-		name: "Pegunungan Gundul",
-		link:
-			"https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_bald-mountains.jpg",
-	},
-	{
-		name: "Gunung Latemar",
-		link:
-			"https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_latemar.jpg",
-	},
-	{
-		name: "Taman Nasional Vanoise",
-		link:
-			"https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_vanoise.jpg",
-	},
-	{
-		name: "Lago di Braies",
-		link:
-			"https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg",
-	},
-];
-
 export default class Card {
 	constructor(data, templateSelector) {
 		this._data = data;
@@ -93,9 +60,3 @@ export default class Card {
 		return this._element;
 	}
 }
-
-data.forEach((item) => {
-	const cardInstance = new Card(item, "#card-template");
-	const populatedTemplate = cardInstance.generateCard();
-	cardsContainer.appendChild(populatedTemplate);
-});
