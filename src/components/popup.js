@@ -21,12 +21,16 @@ class Popup {
 	}
 
 	setEventListeners() {
-		this._popupElement.addEventListener("click", (event) => {
-			if (event.target.classList.contains("popup") || event.target.classList.contains("popup__button_type-close")) {
+		this._popupElement.addEventListener("mousedown", (event) => {
+			if (
+				event.target.classList.contains("popup") ||
+				event.target.classList.contains("popup__button_type-close")
+			) {
 				this.close();
 			}
 		});
 	}
+
 }
 
 export default Popup;
