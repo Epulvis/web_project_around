@@ -1,43 +1,38 @@
-# Proyek 8: Di Sekitar Amerika Serikat
+# Proyek 9: Di Sekitar Amerika Serikat
 
 ## Description
 
-Around The U.S. is a simple web page that displays the profile of an explorer named Jacques Cousteau. The page also showcases a list of cards with images and titles of interesting places around the United States.
+This project is a web application that dynamically renders cards with images and user information. The application features modals (popups) for viewing images and editing user details. The code is structured with modular JavaScript classes to handle different functionalities, adhering to best practices for clean and maintainable code.
 
 ## Features
 
-- Jacques Cousteau's profile with an "Edit" button to update the profile information.
-- A list of attractive cards that can be liked with the "Like" button.
+- **Dynamic Card Rendering**: Cards are dynamically created and rendered on the page based on data provided.
+- **Popup Modals**: Popup modals for viewing images and editing user profiles.
+- **Form Validation**: Client-side form validation for user input.
+- **User Information Handling**: Display and update user information on the page.
 
 ## Technologies Used
 
-- HTML
-- CSS
-- JavaScript
+- JavaScript (ES6+)
+- HTML5
+- CSS3
+- Webpack
+- Babel
+- Autoprefixer
+- HTML Validation
+- Image Optimization
+- Figma
 
 ## Techniques Used
 
-- Responsive Web Design: The web page is designed to be responsive and adapt to different screen sizes and devices.
-
-- Event Handling: JavaScript is used to handle events such as clicking the "Edit" button and the "Like" button.
-
-- DOM Manipulation: The JavaScript code manipulates the Document Object Model (DOM) to update profile information and handle card interactions.
-
-- Figma: The design for the project is created using Figma to plan and visualize the layout.
-
-- Image Optimization: Images are exported from Figma and further optimized using [TinyPNG](https://tinypng.com/) to improve page loading speed.
-
-- Autoprefixer: The CSS code is automatically enhanced with vendor prefixes using [Autoprefixer](https://autoprefixer.github.io/) for better browser compatibility.
-
-- HTML Validation: The HTML code is validated against web standards using [HTML Validator](https://validator.w3.org/) to ensure proper markup and accessibility.
-
-## How to Use
-
-1. Open the "index.html" page in your web browser.
-2. You can view Jacques Cousteau's profile along with his job information.
-3. Click the "Edit" button to change the name and job on the profile.
-4. Scroll down to see the list of fascinating cards around the United States.
-5. You can like the cards by clicking the "Like" button.
+- Responsive Web Design
+- Event Handling
+- DOM Manipulation
+- Object-Oriented Programming (OOP)
+- Modular JavaScript
+- Event-driven programming
+- DOM manipulation
+- Callback functionsaccessibility.
 
 ## Project Links
 
